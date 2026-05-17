@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandini Kedia — HR & Talent Acquisition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --black: #0a0a0a;
+            --white: #fafafa;
+            --gray-light: #f2f2f0;
+            --gray-mid: #deded8;
+            --gray-text: #888;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* ====== NAV ====== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.4rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(250,250,250,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--gray-mid);
+        }
+
+        .nav-logo {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.82rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover { opacity: 0.4; }
+
+        /* ====== HERO ====== */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 55% 45%;
+            padding-top: 5rem;
+            overflow: hidden;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 4rem 6rem 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            font-size: 0.85rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) forwards 0.2s;
+        }
+
+        h1.hero-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(5.5rem, 10vw, 12rem);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeUp 1.2s cubic-bezier(0.22,1,0.36,1) forwards 0.4s;
+        }
+
+        h1.hero-name em { font-style: normal; }
+
+        .hero-tagline {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--gray-text);
+            max-width: 420px;
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) forwards 0.6s;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            opacity: 0;
+            animation: fadeUp 1s cubic-bezier(0.22,1,0.36,1) forwards 0.8s;
+        }
+
+        .stat { border-left: 1px solid var(--black); padding-left: 1.2rem; }
+
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            margin-top: 0.4rem;
+        }
+
+        /* ====== HERO 3D SPHERE ====== */
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sphere-wrap {
+            width: 420px;
+            height: 420px;
+            position: relative;
+            perspective: 900px;
+            transform-style: preserve-3d;
+            opacity: 0;
+            animation: fadeIn 2s forwards 1s;
+        }
+
+        .s-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px solid var(--black);
+            transform-style: preserve-3d;
+        }
+
+        .s-ring-1 { animation: rotX 9s linear infinite; }
+        .s-ring-2 { transform: rotateY(60deg); animation: rotX 9s linear infinite -3s; }
+        .s-ring-3 { transform: rotateY(120deg); animation: rotX 9s linear infinite -6s; }
+        .s-ring-4 { animation: rotY 12s linear infinite; opacity: 0.45; }
+        .s-ring-5 { width: 68%; height: 68%; inset: 16%; transform: rotateX(30deg) rotateY(45deg); animation: rotX 14s linear infinite -1s; opacity: 0.65; }
+        .s-ring-6 { width: 36%; height: 36%; inset: 32%; animation: rotY 7s linear infinite -2s; opacity: 0.3; }
+        .s-ring-7 { width: 88%; height: 88%; inset: 6%; transform: rotateZ(30deg); animation: rotX 18s linear infinite -5s; opacity: 0.2; }
+
+        .s-dot {
+            position: absolute;
+            background: var(--black);
+            border-radius: 50%;
+        }
+
+        .sd1 { width: 8px; height: 8px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+        .sd2 { width: 4px; height: 4px; top: 3%; left: 49%; }
+        .sd3 { width: 4px; height: 4px; bottom: 4%; left: 48%; }
+        .sd4 { width: 3px; height: 3px; top: 49%; left: 2%; }
+        .sd5 { width: 3px; height: 3px; top: 49%; right: 2%; }
+
+        @keyframes rotX {
+            from { transform: var(--base-t,) rotateX(0deg); }
+            to { transform: var(--base-t,) rotateX(360deg); }
+        }
+        @keyframes rotY {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* floating particles */
+        .fp {
+            position: absolute;
+            background: var(--black);
+            border-radius: 50%;
+        }
+        .fp1 { width: 5px; height: 5px; top: 18%; left: 8%; animation: flt1 7s ease-in-out infinite; }
+        .fp2 { width: 3px; height: 3px; top: 65%; right: 10%; animation: flt2 9s ease-in-out infinite; }
+        .fp3 { width: 4px; height: 4px; bottom: 15%; left: 15%; animation: flt1 6s ease-in-out infinite -2s; }
+        .fp4 { width: 2px; height: 2px; top: 12%; right: 20%; animation: flt2 8s ease-in-out infinite -3s; }
+        .fp5 { width: 6px; height: 6px; top: 75%; left: 5%; animation: flt1 10s ease-in-out infinite -5s; opacity: 0.5; }
+
+        @keyframes flt1 {
+            0%,100% { transform: translateY(0) translateX(0); }
+            33% { transform: translateY(-18px) translateX(10px); }
+            66% { transform: translateY(10px) translateX(-12px); }
+        }
+        @keyframes flt2 {
+            0%,100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-22px) translateX(-18px); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(35px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ====== TICKER ====== */
+        .ticker-wrap {
+            overflow: hidden;
+            border-top: 1px solid var(--gray-mid);
+            border-bottom: 1px solid var(--gray-mid);
+            padding: 1.1rem 0;
+        }
+
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: tick 25s linear infinite;
+            will-change: transform;
+        }
+
+        .ticker-item {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--gray-text);
+            padding: 0 2.5rem;
+        }
+
+        .ticker-dot { color: var(--black); font-style: normal; margin-left: 2.5rem; }
+
+        @keyframes tick {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* ====== SECTIONS ====== */
+        .section-label {
+            font-size: 0.82rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 6vw, 6.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            margin-bottom: 4rem;
+        }
+
+        .section-title em { font-style: italic; }
+
+        .deco-line {
+            width: 50px;
+            height: 1px;
+            background: var(--black);
+            margin: 1.5rem 0 2rem;
+        }
+
+        /* ====== ABOUT ====== */
+        .about-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 7rem;
+            align-items: start;
+            background: var(--gray-light);
+        }
+
+        .summary-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.95rem;
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.65;
+        }
+
+        .summary-text {
+            font-size: 1.08rem;
+            line-height: 2.1;
+            color: #555;
+        }
+
+        .summary-text + .summary-text { margin-top: 1.5rem; }
+
+        /* ====== SKILLS ====== */
+        .skills-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 8rem 4rem;
+        }
+
+        .skills-section .section-label { color: rgba(255,255,255,0.35); }
+        .skills-section .section-title { color: var(--white); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .skill-group {
+            padding: 2.5rem 2rem 2.5rem 0;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .skill-group:last-child { border-right: none; }
+
+        .skill-group-title {
+            font-size: 0.82rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+        .skill-tag {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.75);
+            padding: 0.4rem 1rem;
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 2px;
+            letter-spacing: 0.04em;
+            transition: all 0.25s;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.35);
+            color: var(--white);
+        }
+
+        /* ====== EXPERIENCE ====== */
+        .experience-section {
+            padding: 8rem 4rem;
+        }
+
+        .exp-list { max-width: 1000px; margin: 0 auto; }
+
+        .exp-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 5rem;
+            padding: 5rem 0;
+            border-top: 1px solid var(--gray-mid);
+        }
+
+        .exp-meta { align-self: start; }
+
+        .exp-date {
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: var(--gray-text);
+            text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+
+        .exp-company {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+        }
+
+        .exp-location { font-size: 0.92rem; color: var(--gray-text); }
+
+        .exp-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.6rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+
+        .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+
+        .exp-bullets li {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: #4a4a4a;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+
+        .exp-bullets li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--gray-text);
+        }
+
+        /* ====== PROJECTS ====== */
+        .projects-section {
+            background: var(--gray-light);
+            padding: 8rem 4rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px;
+            background: var(--gray-mid);
+        }
+
+        .project-card {
+            background: var(--white);
+            padding: 3.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            transition: background 0.4s ease, color 0.4s ease;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover { background: var(--black); }
+
+        .project-card:hover .project-title { color: var(--white); }
+        .project-card:hover .project-desc { color: rgba(255,255,255,0.55); }
+        .project-card:hover .project-metric { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
+        .project-card:hover .metric-num,
+        .project-card:hover .metric-label { color: var(--white); }
+
+        /* hover: invert 3D shape colors */
+        .project-card:hover .cube-face { border-color: rgba(255,255,255,0.6); }
+        .project-card:hover .a-ring { border-color: rgba(255,255,255,0.6); }
+        .project-card:hover .cyl-body,
+        .project-card:hover .cyl-top,
+        .project-card:hover .cyl-bottom { border-color: rgba(255,255,255,0.6); }
+        .project-card:hover .octa-poly,
+        .project-card:hover .octa-line { stroke: rgba(255,255,255,0.6); }
+        .project-card:hover .diam-poly,
+        .project-card:hover .diam-line { stroke: rgba(255,255,255,0.6); }
+
+        /* ---- 3D Shape: Cube ---- */
+        .shape-wrap {
+            height: 64px;
+            display: flex;
+            align-items: center;
+        }
+
+        .cube-3d {
+            width: 52px;
+            height: 52px;
+            perspective: 160px;
+        }
+
+        .cube-inner {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: spinCube 10s linear infinite;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1.5px solid var(--black);
+            background: transparent;
+            transition: border-color 0.4s;
+        }
+
+        .cf-front  { transform: rotateY(0deg) translateZ(26px); }
+        .cf-back   { transform: rotateY(180deg) translateZ(26px); }
+        .cf-left   { transform: rotateY(-90deg) translateZ(26px); }
+        .cf-right  { transform: rotateY(90deg) translateZ(26px); }
+        .cf-top    { transform: rotateX(90deg) translateZ(26px); }
+        .cf-bottom { transform: rotateX(-90deg) translateZ(26px); }
+
+        @keyframes spinCube {
+            from { transform: rotateX(18deg) rotateY(0deg); }
+            to   { transform: rotateX(18deg) rotateY(360deg); }
+        }
+
+        /* ---- 3D Shape: Atom ---- */
+        .atom-3d {
+            width: 58px;
+            height: 58px;
+            position: relative;
+            perspective: 200px;
+        }
+
+        .a-ring {
+            position: absolute;
+            inset: 4px;
+            border-radius: 50%;
+            border: 1.5px solid var(--black);
+            transition: border-color 0.4s;
+        }
+
+        .ar1 { animation: arSpin1 4.5s linear infinite; }
+        .ar2 { animation: arSpin2 6.5s linear infinite; }
+        .ar3 { animation: arSpin3 5.5s linear infinite; }
+
+        @keyframes arSpin1 {
+            from { transform: rotateX(65deg) rotateZ(0deg); }
+            to   { transform: rotateX(65deg) rotateZ(360deg); }
+        }
+        @keyframes arSpin2 {
+            from { transform: rotateX(65deg) rotateY(60deg) rotateZ(0deg); }
+            to   { transform: rotateX(65deg) rotateY(60deg) rotateZ(360deg); }
+        }
+        @keyframes arSpin3 {
+            from { transform: rotateX(65deg) rotateY(120deg) rotateZ(0deg); }
+            to   { transform: rotateX(65deg) rotateY(120deg) rotateZ(360deg); }
+        }
+
+        /* ---- 3D Shape: Cylinder ---- */
+        .cyl-3d {
+            width: 42px;
+            height: 58px;
+            perspective: 200px;
+        }
+
+        .cyl-inner {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: spinCyl 7s linear infinite;
+            position: relative;
+        }
+
+        .cyl-body {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1.5px solid var(--black);
+            border-radius: 50% / 10px;
+            transition: border-color 0.4s;
+        }
+
+        .cyl-top, .cyl-bottom {
+            position: absolute;
+            width: 100%;
+            height: 14px;
+            border: 1.5px solid var(--black);
+            border-radius: 50%;
+            transition: border-color 0.4s;
+        }
+
+        .cyl-top    { top: 0; }
+        .cyl-bottom { bottom: 0; }
+
+        @keyframes spinCyl {
+            from { transform: rotateY(0deg) rotateX(22deg); }
+            to   { transform: rotateY(360deg) rotateX(22deg); }
+        }
+
+        /* ---- 3D Shape: Diamond/Octahedron ---- */
+        .octa-svg {
+            width: 56px;
+            height: 56px;
+            animation: spinOcta 8s linear infinite;
+            overflow: visible;
+        }
+
+        .octa-poly, .octa-line {
+            transition: stroke 0.4s;
+        }
+
+        @keyframes spinOcta {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+
+        .project-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.2;
+            color: var(--black);
+            transition: color 0.4s;
+        }
+
+        .project-desc {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: #555;
+            transition: color 0.4s;
+        }
+
+        .project-metric {
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            background: var(--black);
+            padding: 0.7rem 1.3rem;
+            align-self: flex-start;
+            margin-top: auto;
+            transition: all 0.4s;
+        }
+
+        .metric-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--white);
+            transition: color 0.4s;
+        }
+
+        .metric-label {
+            font-size: 0.78rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--white);
+            transition: color 0.4s;
+        }
+
+        /* ====== EDUCATION ====== */
+        .edu-section { padding: 8rem 4rem; }
+
+        .edu-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .edu-item {
+            padding: 2.5rem 0;
+            border-top: 1px solid var(--gray-mid);
+        }
+
+        .edu-year {
+            font-size: 0.85rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray-text);
+            margin-bottom: 0.6rem;
+        }
+
+        .edu-degree {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.85rem;
+            font-weight: 400;
+            line-height: 1.3;
+            margin-bottom: 0.4rem;
+        }
+
+        .edu-school { font-size: 0.98rem; color: var(--gray-text); }
+
+        .certs { max-width: 1000px; margin: 4rem auto 0; }
+
+        .cert-list { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+
+        .cert-item {
+            font-size: 0.95rem;
+            padding: 0.6rem 1.3rem;
+            border: 1px solid var(--gray-mid);
+            letter-spacing: 0.04em;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .cert-item:hover {
+            border-color: var(--black);
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* ====== CONTACT ====== */
+        .contact-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 12rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* large ring in bg */
+        .contact-bg-ring {
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.06);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: rotY 30s linear infinite;
+        }
+
+        .contact-bg-ring:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            border-color: rgba(255,255,255,0.04);
+            animation-duration: 20s;
+            animation-direction: reverse;
+        }
+
+        .contact-bg-ring:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            border-color: rgba(255,255,255,0.06);
+            animation-duration: 15s;
+        }
+
+        .contact-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4.5rem, 11vw, 11rem);
+            font-weight: 300;
+            line-height: 0.9;
+            letter-spacing: -0.02em;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-title em { font-style: italic; }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 3rem;
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover { color: var(--white); }
+
+        .footer-line {
+            margin-top: 6rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ====== SCROLL REVEAL ====== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(45px);
+            transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1);
+        }
+
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-visual { display: none; }
+            h1.hero-name { font-size: clamp(4rem, 14vw, 6rem); }
+            nav { padding: 1.2rem 2rem; }
+            .about-inner { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
+            .skills-grid { grid-template-columns: 1fr 1fr; }
+            .skills-section { padding: 5rem 2rem; }
+            .experience-section { padding: 5rem 2rem; }
+            .exp-item { grid-template-columns: 1fr; gap: 1.5rem; }
+            .projects-section { padding: 5rem 2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .edu-section { padding: 5rem 2rem; }
+            .edu-grid { grid-template-columns: 1fr; }
+            .contact-section { padding: 7rem 2rem; }
+            .hero-text { padding: 6rem 2rem; }
+        }
+
+        @media (max-width: 600px) {
+            .skills-grid { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-logo">Nandini Kedia</div>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-text">
+        <p class="hero-label">HR Manager · Talent Acquisition · B2B Sales · Delhi, India</p>
+        <h1 class="hero-name">NANDINI<br>KEDIA</h1>
+        <p class="hero-tagline">Results-driven HR & Talent Acquisition professional with 4+ years of progressive experience spanning full-cycle recruitment, HR operations, workforce planning, and high-volume client management.</p>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-num">40%</div>
+                <div class="stat-label">Time-to-Hire Reduced</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">100+</div>
+                <div class="stat-label">Active Requisitions</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">20%</div>
+                <div class="stat-label">YoY Revenue Growth</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="sphere-wrap">
+            <div class="s-ring s-ring-1"></div>
+            <div class="s-ring s-ring-2"></div>
+            <div class="s-ring s-ring-3"></div>
+            <div class="s-ring s-ring-4"></div>
+            <div class="s-ring s-ring-5"></div>
+            <div class="s-ring s-ring-6"></div>
+            <div class="s-ring s-ring-7"></div>
+            <div class="s-dot sd1"></div>
+            <div class="s-dot sd2"></div>
+            <div class="s-dot sd3"></div>
+            <div class="s-dot sd4"></div>
+            <div class="s-dot sd5"></div>
+            <div class="fp fp1"></div>
+            <div class="fp fp2"></div>
+            <div class="fp fp3"></div>
+            <div class="fp fp4"></div>
+            <div class="fp fp5"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+    <div class="ticker">
+        <span class="ticker-item">HR Analytics <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Talent Acquisition <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">B2B Relations <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Workforce Planning <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">ATS Management <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">PGDM — FORE School of Management <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Delhi, India <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">HR Analytics <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Talent Acquisition <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">B2B Relations <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Workforce Planning <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">ATS Management <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">PGDM — FORE School of Management <span class="ticker-dot">·</span></span>
+        <span class="ticker-item">Delhi, India <span class="ticker-dot">·</span></span>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+    <div class="about-inner reveal">
+        <div>
+            <p class="section-label">About Me</p>
+            <div class="deco-line"></div>
+            <p class="summary-quote">"Data-driven people strategy, built on trust and precision."</p>
+        </div>
+        <div>
+            <p class="summary-text">PGDM graduate in International Business & HR from FORE School of Management, New Delhi. I architect talent pipelines, HR systems, and data-backed strategies that measurably improve organisations. With a dual foundation in HR operations and B2B commercial growth, I bring both the people lens and the business lens to every problem.</p>
+            <p class="summary-text">Proven track record: reduced time-to-hire by 40%, boosted interview-to-offer conversion by 30%, managed 100+ active requisitions simultaneously, and drove 20% YoY revenue growth through strategic B2B account management. Adept at ATS management, HR analytics, onboarding design, and cross-functional stakeholder collaboration.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+    <p class="section-label">Expertise</p>
+    <h2 class="section-title"><em>Skills &</em><br>Technologies</h2>
+    <div class="skills-grid reveal">
+        <div class="skill-group">
+            <p class="skill-group-title">Talent Acquisition</p>
+            <div class="skill-tags">
+                <span class="skill-tag">Full-Cycle Recruitment</span>
+                <span class="skill-tag">Sourcing Strategy</span>
+                <span class="skill-tag">ATS Management</span>
+                <span class="skill-tag">JD Writing</span>
+                <span class="skill-tag">Offer Negotiation</span>
+                <span class="skill-tag">Campus Hiring</span>
+            </div>
+        </div>
+        <div class="skill-group">
+            <p class="skill-group-title">HR Operations</p>
+            <div class="skill-tags">
+                <span class="skill-tag">Onboarding Design</span>
+                <span class="skill-tag">HRIS</span>
+                <span class="skill-tag">Employee Lifecycle</span>
+                <span class="skill-tag">Workforce Planning</span>
+                <span class="skill-tag">Policy Drafting</span>
+            </div>
+        </div>
+        <div class="skill-group">
+            <p class="skill-group-title">Sales & BD</p>
+            <div class="skill-tags">
+                <span class="skill-tag">B2B Relationship Mgmt</span>
+                <span class="skill-tag">Contract Negotiation</span>
+                <span class="skill-tag">Pipeline Management</span>
+                <span class="skill-tag">Revenue Growth</span>
+            </div>
+        </div>
+        <div class="skill-group">
+            <p class="skill-group-title">Analytics & Tools</p>
+            <div class="skill-tags">
+                <span class="skill-tag">HR Dashboards</span>
+                <span class="skill-tag">KPI Reporting</span>
+                <span class="skill-tag">Attrition Analysis</span>
+                <span class="skill-tag">MS Excel Advanced</span>
+                <span class="skill-tag">ClickUp</span>
+                <span class="skill-tag">LinkedIn Recruiter</span>
+                <span class="skill-tag">Naukri</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section" id="experience">
+    <p class="section-label">Career</p>
+    <h2 class="section-title">Work <em>Experience</em></h2>
+
+    <div class="exp-list">
+        <div class="exp-item reveal">
+            <div class="exp-meta">
+                <p class="exp-date">Apr 2025 – Sep 2025</p>
+                <p class="exp-company">Hexerve Solutions</p>
+                <p class="exp-location">Noida, India</p>
+            </div>
+            <div class="exp-content">
+                <h3 class="exp-heading">HR Manager —<br>Talent Acquisition & Operations</h3>
+                <ul class="exp-bullets">
+                    <li>Managed end-to-end recruitment pipeline for 100+ active requisitions across engineering, product, and operations — achieved 95% fill rate within SLA.</li>
+                    <li>Reduced average time-to-hire by 40% through structured interview frameworks, standardised JDs, and proactive talent pipelining.</li>
+                    <li>Designed ATS-integrated candidate tracking system, improving hiring visibility for leadership and reducing recruiter admin time by 30%.</li>
+                    <li>Streamlined onboarding for 20+ new hires with standardised documentation workflows, increasing Day-1 readiness score by 50%.</li>
+                    <li>Drafted 25+ HR documents including offer letters, employment contracts, and compensation structures benchmarked to industry standards.</li>
+                    <li>Collaborated with C-suite to forecast quarterly hiring needs, maintaining a 3-month ahead talent pipeline for critical tech roles.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item reveal">
+            <div class="exp-meta">
+                <p class="exp-date">Oct 2020 – Jan 2024</p>
+                <p class="exp-company">Shree Durga Trading</p>
+                <p class="exp-location">Delhi, India</p>
+            </div>
+            <div class="exp-content">
+                <h3 class="exp-heading">Assistant Manager —<br>Operations & B2B Relations</h3>
+                <ul class="exp-bullets">
+                    <li>Managed 100+ weekly B2B client interactions; negotiated contracts and resolved escalations, contributing to 20% YoY revenue growth.</li>
+                    <li>Led operations team of 8 across a 500+ SKU inventory; implemented data-tracking systems reducing stock discrepancies by 30%.</li>
+                    <li>Built KPI reporting dashboards tracking operational metrics, driving a 25% improvement in process efficiency.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Key <em>Projects</em></h2>
+
+    <div class="projects-grid reveal">
+
+        <!-- Card 1: Rotating Cube -->
+        <div class="project-card">
+            <div class="shape-wrap">
+                <div class="cube-3d">
+                    <div class="cube-inner">
+                        <div class="cube-face cf-front"></div>
+                        <div class="cube-face cf-back"></div>
+                        <div class="cube-face cf-left"></div>
+                        <div class="cube-face cf-right"></div>
+                        <div class="cube-face cf-top"></div>
+                        <div class="cube-face cf-bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="project-title">HR Analytics Dashboard</h3>
+            <p class="project-desc">10-KPI recruitment dashboard tracking time-to-hire, offer acceptance rate, and pipeline conversion. Identified bottlenecks that measurably improved hiring efficiency across the organisation.</p>
+            <div class="project-metric">
+                <span class="metric-num">28%</span>
+                <span class="metric-label">Hiring Efficiency Gain</span>
+            </div>
+        </div>
+
+        <!-- Card 2: Atom rings -->
+        <div class="project-card">
+            <div class="shape-wrap">
+                <div class="atom-3d">
+                    <div class="a-ring ar1"></div>
+                    <div class="a-ring ar2"></div>
+                    <div class="a-ring ar3"></div>
+                </div>
+            </div>
+            <h3 class="project-title">Employee Attrition Prediction Model</h3>
+            <p class="project-desc">Data-driven attrition analysis identifying top 5 flight-risk indicators — tenure, compensation gap, engagement score — enabling proactive retention interventions before talent is lost.</p>
+            <div class="project-metric">
+                <span class="metric-num">18%</span>
+                <span class="metric-label">Projected Turnover Reduction</span>
+            </div>
+        </div>
+
+        <!-- Card 3: Cylinder -->
+        <div class="project-card">
+            <div class="shape-wrap">
+                <div class="cyl-3d">
+                    <div class="cyl-inner">
+                        <div class="cyl-body"></div>
+                        <div class="cyl-top"></div>
+                        <div class="cyl-bottom"></div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="project-title">Sales CRM Pipeline Optimisation</h3>
+            <p class="project-desc">Redesigned B2B sales tracking system for 100+ client accounts. Standardised follow-up cadences and deal-stage categorisation, sharpening forecast accuracy for leadership reporting.</p>
+            <div class="project-metric">
+                <span class="metric-num">20%</span>
+                <span class="metric-label">Sales Cycle Reduction</span>
+            </div>
+        </div>
+
+        <!-- Card 4: Diamond/Octahedron -->
+        <div class="project-card">
+            <div class="shape-wrap">
+                <svg class="octa-svg" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <polygon class="octa-poly" points="28,4 52,28 28,52 4,28" stroke="black" stroke-width="1.5"/>
+                    <polygon class="octa-poly" points="28,4 52,28 28,28" stroke="black" stroke-width="1" opacity="0.5"/>
+                    <polygon class="octa-poly" points="28,4 4,28 28,28" stroke="black" stroke-width="1" opacity="0.3"/>
+                    <polygon class="octa-poly" points="28,52 52,28 28,28" stroke="black" stroke-width="1" opacity="0.25"/>
+                    <line class="octa-line" x1="28" y1="4" x2="28" y2="52" stroke="black" stroke-width="0.8" opacity="0.35"/>
+                    <line class="octa-line" x1="4" y1="28" x2="52" y2="28" stroke="black" stroke-width="0.8" opacity="0.35"/>
+                </svg>
+            </div>
+            <h3 class="project-title">Tech Talent Acquisition Research</h3>
+            <p class="project-desc">Benchmarked hiring strategies of 15+ IT firms. Proposed data-driven screening improvements reducing time-to-hire by 35% in simulated model — subsequently adopted as internal recruitment SOP.</p>
+            <div class="project-metric">
+                <span class="metric-num">35%</span>
+                <span class="metric-label">Time-to-Hire Reduction</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-section" id="education">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">Education &<br><em>Certifications</em></h2>
+
+    <div class="edu-grid reveal">
+        <div class="edu-item">
+            <p class="edu-year">2024 – 2026</p>
+            <p class="edu-degree">PGDM — International Business & HR</p>
+            <p class="edu-school">FORE School of Management, New Delhi</p>
+        </div>
+        <div class="edu-item">
+            <p class="edu-year">2017 – 2020</p>
+            <p class="edu-degree">B.Com (Hons) — Commerce</p>
+            <p class="edu-school">Shivaji College, University of Delhi</p>
+        </div>
+    </div>
+
+    <div class="certs reveal">
+        <p class="section-label" style="margin-top: 4rem;">Certifications</p>
+        <div class="cert-list">
+            <span class="cert-item">HR Analytics — Coursera</span>
+            <span class="cert-item">People Analytics — Wharton / Coursera</span>
+            <span class="cert-item">Advanced AI Automation for HR — Udemy</span>
+            <span class="cert-item">Fundamentals of Digital HR — LinkedIn Learning</span>
+            <span class="cert-item">Hiring & Onboarding with ClickUp — Coursera</span>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+    <div class="contact-bg-ring"></div>
+    <div class="contact-bg-ring"></div>
+    <div class="contact-bg-ring"></div>
+
+    <h2 class="contact-title">Let's <em>Work</em><br>Together</h2>
+    <ul class="contact-links">
+        <li><a href="mailto:nandinikedia2508@gmail.com">nandinikedia2508@gmail.com</a></li>
+        <li><a href="tel:+918368264714">+91 83682 64714</a></li>
+        <li><a href="https://linkedin.com/in/nandini-kedia-362813327" target="_blank">LinkedIn</a></li>
+        <li><a href="#">Delhi, India</a></li>
+    </ul>
+    <p class="footer-line">Nandini Kedia · HR Manager & Talent Acquisition Specialist · 2025</p>
+</section>
+
+<script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('visible'), i * 60);
+            }
+        });
+    }, { threshold: 0.08 });
+
+    reveals.forEach(el => obs.observe(el));
+
+    // Subtle mouse parallax on hero sphere
+    const sphere = document.querySelector('.sphere-wrap');
+    if (sphere) {
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 25;
+            const y = (e.clientY / window.innerHeight - 0.5) * 25;
+            sphere.style.transform = `rotateX(${-y * 0.5}deg) rotateY(${x * 0.5}deg)`;
+            sphere.style.transition = 'transform 0.4s ease';
+        });
+    }
+
+    // Nav active link on scroll
+    const sections = document.querySelectorAll('section[id], div.hero');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const sectionObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(a => {
+                    a.style.opacity = a.getAttribute('href') === '#' + entry.target.id ? '1' : '0.5';
+                    a.style.fontWeight = a.getAttribute('href') === '#' + entry.target.id ? '500' : '300';
+                });
+            }
+        });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('section[id]').forEach(s => sectionObs.observe(s));
+</script>
+
+</body>
+</html>
